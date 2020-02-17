@@ -1,0 +1,39 @@
+package hdfs.exam;
+
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataOutputStream;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+
+public class HDFSExam02 {
+
+	public static void main(String[] args) {
+		Configuration conf = new Configuration();
+		
+		FileSystem hdfs = null;
+		
+		FSDataOutputStream hdfsout = null;
+		try {
+			hdfs = FileSystem.get(conf);
+			
+			//4.hdfs의 경로를 표현할 수 있는 객체
+			//	=> hdfs에 출력할 파일의 경로를 명령행매개변수로
+			//	받아서 적용하겠다는 의미
+			Path path = new Path(args[0]);
+			
+			//5. hdfs에 저장하기 위해 output 스트림 생성하기
+			hdfsout = hdfs.create(path);
+			//6. 출력 스트림에 데이터를 출력하여 hdfs에 저장하기
+			//	=> 명령행 매개변수로 입력한 내용을 파일에 쓰겠다는 의미
+			hdfsout.writeUTF(args[1]); 
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

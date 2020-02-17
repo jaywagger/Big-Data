@@ -1,0 +1,12 @@
+package hdfs.exam;
+
+import org.apache.hadoop.conf.Configuration;
+
+public class HDFSExam02 {
+
+	public static void main(String[] args) {
+		Configuration conf = new Configuration();
+		
+	}
+
+}

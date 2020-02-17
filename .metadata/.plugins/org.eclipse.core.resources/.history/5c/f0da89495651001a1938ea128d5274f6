@@ -1,0 +1,34 @@
+package hdfs.exam;
+//저장된 파일을 읽어서 콘솔에 출력하기
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FSDataOutputStream;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+
+public class HDFSCopyTest {
+
+	public static void main(String[] args) {
+		Configuration conf = new Configuration();
+		FileSystem hdfs = null;
+		FSDataInputStream hdfsread = null;
+		FSDataOutputStream hdfscopy = null;
+		try {
+			hdfs = FileSystem.get(conf);
+			Path path = new Path(args[0]);
+			// 읽기
+			hdfsread = hdfs.open(path);
+			System.out.println(hdfsread.readUTF()); 
+			//복제하기
+			hdfscopy = hdfs.create(path);
+			hdfscopy.writeUTF(hdfsread.readUTF()); 
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
