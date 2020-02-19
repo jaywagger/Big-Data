@@ -30,8 +30,16 @@ public class HDFSCopyTest {
 			//복제하기
 			Path path2 = new Path(args[1]);
 			hdfscopy = hdfs.create(path2);// 연 파일을 새로 만들고
-			hdfscopy.writeUTF(hdfsread.readUTF()); // 그 내용을 다시 쓴다. 결국 복제가 된 것 이다. 
-			
+			/*hdfscopy.writeUTF(hdfsread.readUTF()); // 그 내용을 다시 쓴다. 결국 복제가 된 것 이다. 
+			*/
+			while(true) {
+				int data = hdfsread.read();
+				System.out.print((char)data);
+				if(data==-1) {
+					break;
+				}
+				hdfscopy.write((char)data);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
