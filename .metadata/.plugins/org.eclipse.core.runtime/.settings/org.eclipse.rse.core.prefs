@@ -1,4 +1,4 @@
-activeuserprofiles=M15014;Team
+activeuserprofiles=M1501;M15014;Team
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=student
-useridperkey=M15014.Local\=student;M15014.192.168.111.131\=hadoop;
+useridperkey=M15014.Local\=student;M1501.192.168.111.131\=hadoop;M1501.Local\=student;
