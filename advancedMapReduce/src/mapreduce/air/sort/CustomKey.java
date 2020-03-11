@@ -17,6 +17,8 @@ public class CustomKey                //데이터타입이 무엇인가
 	//비교할 변수
 	private String year;
 	private Integer month;
+	private Long mapkey;
+	
 	
 	//기본생성자
 	public CustomKey() {
@@ -28,6 +30,13 @@ public class CustomKey                //데이터타입이 무엇인가
 		this.month = month;
 	}
 	
+	public CustomKey(String year, Integer month, Long mapkey) {
+		super();
+		this.year = year;
+		this.month = month;
+		this.mapkey = mapkey;
+	}
+
 	//데이터를 쓰고 읽는 작업을 처리
 	//데이터를 쓰기 - 직렬화
 	//데이터를 읽기 - 역직렬화
@@ -36,6 +45,7 @@ public class CustomKey                //데이터타입이 무엇인가
 	public void write(DataOutput out) throws IOException {
 		WritableUtils.writeString(out, year);
 		out.writeInt(month);
+		out.writeLong(mapkey);
 	}	
 	
 	//역직렬화될 때 호출
@@ -43,6 +53,7 @@ public class CustomKey                //데이터타입이 무엇인가
 	public void readFields(DataInput in) throws IOException {
 		year = WritableUtils.readString(in);
 		month = in.readInt();
+		mapkey = in.readLong();
 	}
 
 	//사용자가 만들어 놓은 키를 기준으로 정렬하기 위해서 비교하게 할 메소드
@@ -70,6 +81,15 @@ public class CustomKey                //데이터타입이 무엇인가
 
 	public void setMonth(Integer month) {
 		this.month = month;
+	}
+	
+
+	public Long getMapkey() {
+		return mapkey;
+	}
+
+	public void setMapkey(Long mapkey) {
+		this.mapkey = mapkey;
 	}
 
 	@Override

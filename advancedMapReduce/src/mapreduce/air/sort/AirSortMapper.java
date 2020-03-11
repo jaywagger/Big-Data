@@ -25,6 +25,7 @@ public class AirSortMapper
 					Integer.parseInt(line[15])>0) {
 					outputKey.setYear(line[0]);
 					outputKey.setMonth(new Integer(line[1]));
+					outputKey.setMapkey(key.get());
 					context.write(outputKey, one);
 				}
 			}
