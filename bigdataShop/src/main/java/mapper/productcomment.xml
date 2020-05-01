@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.multi.bigdataShop.product.comment">
+
+	<select id="select" resultType="comment">
+		select * from pro_comment
+		where prd_no=#{prd_no}
+	</select>
+	
+
+	<select id="insert" resultType="comment" parameterType="comment">
+		insert into pro_comment values(#{prd_no},#{mem_id},#{pro_comment},sysdate)
+	</select>
+		<!-- DAO 에서 어느 SQL를 사용할 것인지 구분하는 id -->
+	<select id="comment_result" resultType="comment_result">
+		<![CDATA[
+		select * from (select * from comment_result order by cast(count as int) desc) where rownum<11		
+	]]>	
+		
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
